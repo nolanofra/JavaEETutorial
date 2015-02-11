@@ -9,38 +9,37 @@ import java.lang.reflect.Method;
  */
 public class DelegateWithReflection {
 
-    public static void main(String[] args) throws Exception
-    {
-        String[] list= {"to","be","or","not","to","be"};
+    public static void main(String[] args) throws Exception {
+        String stringToPrint = "Hello, World!";
         Method m1 = DelegateWithReflection.class.getMethod("toConsole",
-                new Class[] {String.class});
-        Display(m1, list);
+                new Class[]{String.class});
+        Display(m1, stringToPrint);
         Method m2 = DelegateWithReflection.class.getMethod("toFile",
-                new Class[] {String.class});
-        Display (m2, list);
+                new Class[]{String.class});
+        Display(m2, stringToPrint);
     }
-    public static void toConsole (String str)
-    {
-        System.out.print(str+" ");
+
+    public static void toConsole(String str) {
+        System.out.print(str + " ");
     }
-    public static void toFile (String s)
-    {
+
+    public static void toFile(String s) {
         File f = new File("delegate.txt");
-        try{
+        try {
             PrintWriter fileOut =
                     new PrintWriter(new FileOutputStream(f));
             fileOut.write(s);
             fileOut.flush();
             fileOut.close();
-        }catch(IOException ioe) {}
-    }
-    public static void Display(Method m, String[] list)
-    {
-        for(int k = 0; k < list.length; k++) {
-            try {
-                Object[] args = {new String(list[k])};
-                m.invoke(null, args);
-            }catch(Exception e) {}
+        } catch (IOException ioe) {
         }
+    }
+
+    public static void Display(Method m, String stringToPrint) {
+        try {
+            m.invoke(null, stringToPrint);
+        } catch (Exception e) {
+        }
+
     }
 }
