@@ -42,7 +42,7 @@ public class CartClient {
                 Logger.getLogger(CartClient.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            cart.initialize("Duke d'Url", "123");
+            cart.initialize("Francesco", "123");
             cart.addBook("Infinite Jest");
             cart.addBook("Bel Canto");
             cart.addBook("Kafka on the Shore");
