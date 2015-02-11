@@ -7,14 +7,22 @@ public class Main {
         System.out.println("Hello World!");
         Foo foo = new Foo("ciao");
         ReferenceTest(foo);
-        System.out.print(foo.getName());
+        System.out.println(foo.getName());
+
+
+        /*IntRef intRef = new IntRef(1);
+        ReferenceTestWrapped(intRef);
+        System.out.println(intRef.value);*/
     }
 
 
     public static void ReferenceTest(Foo foo) {
-        //foo = new Foo("hello");
+        foo = new Foo("hello");
+        //foo.setName("hello");
+    }
 
-        foo.setName("hello");
+    public static void ReferenceTestWrapped(IntRef refInt) {
+        refInt.value++;
     }
 }
 
@@ -33,6 +41,14 @@ class Foo {
         this.name = name;
     }
 
+}
+
+class IntRef {
+    public int value;
+
+    public IntRef(int value) {
+        this.value = value;
+    }
 }
 
 enum Planet {
