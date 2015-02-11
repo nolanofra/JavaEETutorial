@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:fc="http://java.sun.com/jsf/composite/components">
+    
+    <h:head>
+    <title>Response Page</title>
+    </h:head>
+    
+   <h:form>
+    <h:outputText value="#{bundle.YouAre} "/>
+    <h:outputText value="#{bundle.SameAge}"
+                  rendered="#{usersBDay.ageDiff == 0}"/>
+    <h:outputText value="#{usersBDay.absAgeDiff}"
+                  rendered="#{usersBDay.ageDiff lt 0}"/>
+    <h:outputText value=" #{bundle.Year} "
+                  rendered="#{usersBDay.ageDiff == -1}"/>
+    <h:outputText value=" #{bundle.Years} "
+                  rendered="#{usersBDay.ageDiff lt -1}"/>
+    <h:outputText value="#{bundle.Younger}"
+                  rendered="#{usersBDay.ageDiff lt 0}"/>
+    <h:outputText value="#{usersBDay.absAgeDiff}"
+                  rendered="#{usersBDay.ageDiff gt 0}"/>
+    <h:outputText value=" #{bundle.Year} "
+                  rendered="#{usersBDay.ageDiff == 1}"/>
+    <h:outputText value=" #{bundle.Years} "
+                  rendered="#{usersBDay.ageDiff gt 1}"/>
+    <h:outputText value="#{bundle.Older}" 
+                  rendered="#{usersBDay.ageDiff gt 0}"/>
+    <p/>
+    <h:outputText 
+        value="#{bundle.AverageAge} #{usersBDay.averageAgeDifference}." />
+    <p/>
+    <h:commandButton id="back" value="#{bundle.Back}" action="greeting"/>
+</h:form>
+</html>
+
