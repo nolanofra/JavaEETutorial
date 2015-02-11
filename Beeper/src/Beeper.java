@@ -29,12 +29,15 @@ public class Beeper extends JPanel {
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Toolkit.getDefaultToolkit().beep();
-            }
-        });
+
+        MyActionListener myListener = new MyActionListener();
+        button.addActionListener(myListener);
+//        button.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Toolkit.getDefaultToolkit().beep();
+//            }
+//        });
 
         //Display the window.
         frame.pack();
@@ -59,3 +62,4 @@ class MyActionListener implements ActionListener {
         Toolkit.getDefaultToolkit().beep();
     }
 }
+
